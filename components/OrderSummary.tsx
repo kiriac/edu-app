@@ -2,7 +2,7 @@
 
 import React from "react";
 import { MapPin, Calendar } from "lucide-react";
-import { Button } from "../client/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 // Define interfaces directly in component
 interface OrderSummaryType {

@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Header from "../components/Header";
-import ProgressTracker from "../components/ProgressTracker";
-import InfoBanner from "../components/InfoBanner";
-import SkipCard from "../components/SkipCard";
-import OrderSummaryComponent from "../components/OrderSummary";
-import Footer from "../components/Footer";
+import Header from "@/components/Header";
+import ProgressTracker from "@/components/ProgressTracker";
+import InfoBanner from "@/components/InfoBanner";
+import SkipCard from "@/components/SkipCard";
+import OrderSummaryComponent from "@/components/OrderSummary";
+import Footer from "@/components/Footer";
 
 // Define types within the page component for simplicity
 interface Skip {

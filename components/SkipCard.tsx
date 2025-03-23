@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Check, Truck, TruckIcon, Package, Trash } from "lucide-react";
-import { Badge } from "../client/src/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 // Define Skip interface directly in the component
 interface Skip {
