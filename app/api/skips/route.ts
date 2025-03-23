@@ -1,5 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Skip } from "../../../types";
+
+// Define Skip interface directly in the file
+interface Skip {
+  id: number;
+  name: string;
+  description: string;
+  size: string;
+  price: number;
+  features: string[];
+  capacity: string;
+  suitableFor: string;
+  hireIncluded: string;
+}
 
 // Sample skip data - in a real app, this would come from a database
 const skips: Skip[] = [
