@@ -1,8 +1,8 @@
 import { Check, Package, Truck, Leaf } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Skip } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { Skip } from "../lib/types";
+import { cn } from "../lib/utils";
 
 interface SkipCardProps {
   skip: Skip;

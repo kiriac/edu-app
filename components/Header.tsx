@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Menu, X, ShoppingBag, Phone, UserCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../client/src/components/ui/button";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);

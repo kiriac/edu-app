@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Header from "@/components/Header";
-import ProgressTracker from "@/components/ProgressTracker";
-import InfoBanner from "@/components/InfoBanner";
-import SkipCard from "@/components/SkipCard";
-import OrderSummary from "@/components/OrderSummary";
-import Footer from "@/components/Footer";
-import { Skip, SelectedSkip, OrderSummary as OrderSummaryType } from "@/lib/types";
+import Header from "../components/Header";
+import ProgressTracker from "../components/ProgressTracker";
+import InfoBanner from "../components/InfoBanner";
+import SkipCard from "../components/SkipCard";
+import OrderSummary from "../components/OrderSummary";
+import Footer from "../components/Footer";
+import { Skip, SelectedSkip, OrderSummary as OrderSummaryType } from "../lib/types";
 import { Loader2, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export default function SkipSelector() {
   const [selectedSkip, setSelectedSkip] = useState<SelectedSkip | null>(null);

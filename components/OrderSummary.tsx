@@ -3,7 +3,7 @@
 import React from "react";
 import { MapPin, Calendar } from "lucide-react";
 import { OrderSummary as OrderSummaryType, SelectedSkip } from "../types";
-import { Button } from "@/components/ui/button";
+import { Button } from "../client/src/components/ui/button";
 
 interface OrderSummaryProps {
   selectedSkip: SelectedSkip | null;
