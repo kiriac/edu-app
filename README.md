@@ -1,64 +1,73 @@
-# Skip Hire Selection Page - We Want Waste
+# Skip Selector Redesign
 
-A completely redesigned Skip Selection page for wewantwaste.co.uk, built with Next.js, React, TypeScript, and Tailwind CSS.
+A responsive React-based redesign of the skip selection page for wewantwaste.co.uk. This project features a clean, modern design with improved user experience across both mobile and desktop devices.
 
 ## Project Overview
 
-This project is a modern, mobile-responsive redesign of the Skip Selection page for wewantwaste.co.uk. The redesign focuses on providing a seamless user experience with improved visual hierarchy and user interactions.
-
-### Key Features
-
-- **Modern UI Design:** Clean, professional interface with a vibrant green color scheme
-- **Mobile Responsive:** Fully responsive layout that works great on all device sizes
-- **Single Skip Selection:** Users can select only one skip at a time
-- **Order Summary:** Dynamic order summary that updates based on selection
-- **API Integration:** Fetch skip data from the API endpoint
+This application is a redesign of a skip selection interface, allowing users to:
+- Browse available skip options
+- View detailed skip information including size, capacity, and features
+- Select a skip and see pricing information
+- View order summary with delivery costs and total price
 
 ## Technology Stack
 
-- **Framework:** Next.js 18.3.1 (App Router)
-- **Library:** React with TypeScript
-- **Styling:** Tailwind CSS with custom color variables
-- **UI Components:** ShadCN/ui customized components
-- **State Management:** React Hooks (useState)
-- **Data Fetching:** TanStack Query v5
+- Next.js 18.3.1
+- TypeScript
+- Tailwind CSS
+- Shadcn UI Components
 
-## Components
+## Features
 
-- **Header:** Navigation and branding
-- **ProgressTracker:** Visual indication of the order process
-- **InfoBanner:** Key information about services
-- **SkipCard:** Individual skip selection cards
-- **OrderSummary:** Dynamic order total and breakdown
-- **Footer:** Company information and links
+- Responsive design for mobile and desktop
+- Modern, visually appealing interface
+- Improved visual hierarchy and user flow
+- API integration for skip data
 
-## API Endpoints
+## Getting Started
 
-The application uses a single API endpoint for fetching skip data:
+### Prerequisites
 
-- **GET /api/skips** - Returns an array of available skips with details
+- Node.js (version 18 or later)
+- npm or yarn
 
-## Installation and Setup
+### Installation
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+1. Clone the repository:
+   ```
+   git clone https://github.com/kiriac/edu-app.git
+   cd edu-app
+   ```
 
-## Design Decisions
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-- **Color Scheme:** Vibrant green palette to represent eco-friendliness and waste management
-- **Visual Hierarchy:** Clear visual distinction between selected and unselected skips
-- **Card Layout:** Information organized in visually appealing cards with clear CTAs
-- **Simplified Selection:** Removed quantity controls to simplify the user experience
+3. Start the development server:
+   ```
+   npm run dev
+   ```
 
-## Future Improvements
+4. Open your browser and navigate to `http://localhost:5000`
 
-- Add address search functionality for location-specific pricing
-- Implement form validation for delivery details
-- Add user authentication for returning customers
-- Implement analytics tracking for conversion optimization
+## Project Structure
+
+- `/app` - Next.js app directory containing pages and API routes
+- `/components` - Reusable UI components
+- `/types` - TypeScript type definitions
+- `/shared` - Shared code between client and server
+- `/server` - Server-side code for the application
+
+## API Integration
+
+The application fetches skip data from the API endpoint:
+`https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft`
+
+## Deployment
+
+The application can be deployed to any platform that supports Next.js applications, such as Vercel, Netlify, or as a static site.
 
 ## License
 
-This project is licensed under the MIT License
+This project is created for educational purposes only.
