@@ -25,33 +25,17 @@ export default function SkipSelector() {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
-  const handleSelectSkip = (skip: Skip, quantity: number) => {
-    const skipTotal = skip.price * quantity;
-    
+  const handleSelectSkip = (skip: Skip) => {
     setSelectedSkip({
       id: skip.id,
       name: skip.name,
-      quantity: quantity,
-      price: skip.price,
-      totalPrice: skipTotal
-    });
-  };
-
-  const handleQuantityChange = (skipId: number, quantity: number) => {
-    if (!selectedSkip || selectedSkip.id !== skipId) return;
-    
-    const updatedTotal = selectedSkip.price * quantity;
-    
-    setSelectedSkip({
-      ...selectedSkip,
-      quantity: quantity,
-      totalPrice: updatedTotal
+      price: skip.price
     });
   };
 
   useEffect(() => {
     if (selectedSkip) {
-      const subtotal = selectedSkip.totalPrice;
+      const subtotal = selectedSkip.price;
       const delivery = 0; // Free delivery
       const vat = subtotal * 0.2; // 20% VAT
       const total = subtotal + delivery + vat;
@@ -79,38 +63,43 @@ export default function SkipSelector() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       <ProgressTracker />
       
-      <main className="flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-grow py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-neutral-900 mb-2">Choose Your Skip</h1>
-            <p className="text-neutral-600 max-w-2xl mx-auto">
-              Select the appropriate skip size for your garden waste at <span className="font-medium">{address}</span>
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">Choose Your Skip</h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Select the appropriate skip size for your garden waste at <span className="font-medium text-gray-800">{address}</span>
             </p>
           </div>
 
           <InfoBanner />
 
           {/* Skip grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {isLoading ? (
-              <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center py-16">
-                <Loader2 className="h-8 w-8 text-primary animate-spin mr-2" />
-                <span className="text-lg font-medium">Loading available skips...</span>
+              <div className="col-span-1 md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center py-16">
+                <div className="relative w-16 h-16 mb-4">
+                  <div className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-gray-200"></div>
+                  <div className="absolute top-0 left-0 w-full h-full rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+                </div>
+                <span className="text-lg font-medium text-gray-700">Loading available skips...</span>
               </div>
             ) : isError ? (
-              <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-                <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
-                <h3 className="text-xl font-medium text-neutral-900 mb-2">Error Loading Skips</h3>
-                <p className="text-neutral-600 mb-4">We encountered a problem while loading available skips. Please try again.</p>
+              <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-white border border-red-100 rounded-xl p-8 text-center shadow-sm">
+                <div className="rounded-full bg-red-50 w-20 h-20 flex items-center justify-center mx-auto mb-5">
+                  <AlertCircle className="h-10 w-10 text-red-500" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Error Loading Skips</h3>
+                <p className="text-gray-600 mb-6 max-w-md mx-auto">We encountered a problem while loading available skips. Please try again.</p>
                 <Button 
                   variant="default" 
                   onClick={() => refetch()}
-                  className="px-4 py-2 bg-primary-700 hover:bg-primary-800"
+                  className="px-6 py-2.5"
                 >
                   Retry
                 </Button>
@@ -122,15 +111,16 @@ export default function SkipSelector() {
                   skip={skip}
                   isSelected={selectedSkip?.id === skip.id}
                   onSelect={handleSelectSkip}
-                  onQuantityChange={handleQuantityChange}
                 />
               ))
             ) : (
-              <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-                <AlertCircle className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-xl font-medium text-neutral-900 mb-2">No Skips Available</h3>
-                <p className="text-neutral-600 mb-4">We couldn't find any skips available for your location at this time.</p>
-                <Button className="px-4 py-2 bg-primary-700 hover:bg-primary-800">
+              <div className="col-span-1 md:col-span-2 lg:col-span-3 bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+                <div className="rounded-full bg-amber-50 w-20 h-20 flex items-center justify-center mx-auto mb-5">
+                  <AlertCircle className="h-10 w-10 text-amber-500" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">No Skips Available</h3>
+                <p className="text-gray-600 mb-6 max-w-md mx-auto">We couldn't find any skips available for your location at this time.</p>
+                <Button className="px-6 py-2.5">
                   Try a Different Area
                 </Button>
               </div>
