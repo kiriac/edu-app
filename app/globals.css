@@ -12,11 +12,16 @@
   }
 }
 
-/* Custom styles for the application */
-.skip-card-transition {
-  transition: all 0.3s ease;
+/* Custom styles for the skip hire application */
+.skip-card-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.primary-gradient {
-  background: linear-gradient(to right, #10b981, #059669);
+.skip-card-selected {
+  box-shadow: 0 0 0 2px hsl(158, 64%, 32%), 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.progress-active {
+  color: hsl(158, 64%, 32%);
+  border-color: hsl(158, 64%, 32%);
 }
