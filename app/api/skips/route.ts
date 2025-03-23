@@ -116,12 +116,14 @@ export async function GET(request: NextRequest) {
     // Construct the external API URL with the parameters
     const apiUrl = `${EXTERNAL_API_URL}?postcode=${postcode}&area=${area}`;
     
-    // Fetch data from the external API
+    console.log(`Fetching skips data from external API: ${apiUrl}`);
+    
+    // Fetch data from the external API with proper cache control
     const response = await fetch(apiUrl, {
       headers: {
         'Accept': 'application/json',
       },
-      cache: 'no-store',
+      next: { revalidate: 300 }, // Cache for 5 minutes
     });
     
     if (!response.ok) {
@@ -133,14 +135,19 @@ export async function GET(request: NextRequest) {
     
     // Only include skips that aren't forbidden
     const validSkips = externalSkipsData.filter(skip => !skip.forbidden);
+    console.log(`Found ${validSkips.length} valid skips from external API`);
     
     // Transform the data to match our interface
     const transformedSkips = transformSkipData(validSkips);
     
-    return NextResponse.json(transformedSkips, { status: 200 });
+    return NextResponse.json(transformedSkips, { 
+      status: 200,
+      headers: {
+        'Cache-Control': 'public, max-age=300, stale-while-revalidate=60'
+      }
+    });
   } catch (error) {
     console.error("Error fetching skips:", error);
-    // If there's an error with the external API, fall back to our sample data
     return NextResponse.json(
       { error: "Failed to fetch skip data" },
       { status: 500 }

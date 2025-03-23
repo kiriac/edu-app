@@ -42,17 +42,20 @@ export default function SkipSelectorPage() {
   const [selectedSkip, setSelectedSkip] = useState<SelectedSkip | null>(null);
   const [address, setAddress] = useState("123 Sample Street, London, SW1A 1AA");
 
-  // Fetch skips data from our API route which connects to the external API
+  // Fetch skips data directly from our Next.js API route
   const { data: skips = [], isLoading, error } = useQuery<Skip[]>({
     queryKey: ['skips'],
     queryFn: async () => {
+      // Our Next.js API route now directly communicates with the external API
       const response = await fetch('/api/skips');
       if (!response.ok) {
         throw new Error('Failed to fetch skips');
       }
       const data = await response.json();
       return data;
-    }
+    },
+    staleTime: 5 * 60 * 1000, // 5 minutes cache
+    refetchOnWindowFocus: false,
   });
 
   // Calculate order summary based on selected skip
