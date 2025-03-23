@@ -2,8 +2,21 @@
 
 import React from "react";
 import { MapPin, Calendar } from "lucide-react";
-import { OrderSummary as OrderSummaryType, SelectedSkip } from "../types";
 import { Button } from "../client/src/components/ui/button";
+
+// Define interfaces directly in component
+interface OrderSummaryType {
+  subtotal: number;
+  delivery: number;
+  vat: number;
+  total: number;
+}
+
+interface SelectedSkip {
+  id: number;
+  name: string;
+  price: number;
+}
 
 interface OrderSummaryProps {
   selectedSkip: SelectedSkip | null;

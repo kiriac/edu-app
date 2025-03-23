@@ -2,8 +2,20 @@
 
 import React from "react";
 import { Check, Truck, TruckIcon, Package, Trash } from "lucide-react";
-import { Skip } from "../types";
 import { Badge } from "../client/src/components/ui/badge";
+
+// Define Skip interface directly in the component
+interface Skip {
+  id: number;
+  name: string;
+  description: string;
+  size: string;
+  price: number;
+  features: string[];
+  capacity: string;
+  suitableFor: string;
+  hireIncluded: string;
+}
 
 interface SkipCardProps {
   skip: Skip;
