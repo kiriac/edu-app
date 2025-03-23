@@ -42,15 +42,16 @@ export default function SkipSelectorPage() {
   const [selectedSkip, setSelectedSkip] = useState<SelectedSkip | null>(null);
   const [address, setAddress] = useState("123 Sample Street, London, SW1A 1AA");
 
-  // Fetch skips data
+  // Fetch skips data from our API route which connects to the external API
   const { data: skips = [], isLoading, error } = useQuery<Skip[]>({
-    queryKey: ['/api/skips'],
+    queryKey: ['skips'],
     queryFn: async () => {
       const response = await fetch('/api/skips');
       if (!response.ok) {
         throw new Error('Failed to fetch skips');
       }
-      return response.json();
+      const data = await response.json();
+      return data;
     }
   });
 
