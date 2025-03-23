@@ -20,7 +20,5 @@ export interface OrderSummary {
 export interface SelectedSkip {
   id: number;
   name: string;
-  quantity: number;
   price: number;
-  totalPrice: number;
 }

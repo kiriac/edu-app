@@ -1,4 +1,5 @@
 import { Plus, Minus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SkipQuantityControlProps {
   value: number;
@@ -14,28 +15,34 @@ export default function SkipQuantityControl({
   onChange
 }: SkipQuantityControlProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center bg-gray-50 rounded-lg p-0.5 border border-gray-200">
       <button
         onClick={onDecrement}
-        className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-l-md border border-gray-300"
+        className={cn(
+          "w-8 h-8 flex items-center justify-center rounded-md transition-colors",
+          value > 1 
+            ? "text-gray-700 hover:bg-gray-200" 
+            : "text-gray-400 cursor-not-allowed"
+        )}
+        disabled={value <= 1}
         aria-label="Decrease quantity"
       >
-        <Minus className="h-3 w-3" />
+        <Minus className="h-3.5 w-3.5" />
       </button>
       <input
         type="number"
         min="1"
         value={value}
         onChange={(e) => onChange(parseInt(e.target.value) || 1)}
-        className="w-12 h-8 text-center border-t border-b border-gray-300 focus:outline-none"
+        className="w-10 h-8 text-center bg-transparent border-none focus:outline-none text-gray-900 font-medium"
         aria-label="Quantity"
       />
       <button
         onClick={onIncrement}
-        className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-r-md border border-gray-300"
+        className="w-8 h-8 flex items-center justify-center rounded-md text-gray-700 hover:bg-gray-200 transition-colors"
         aria-label="Increase quantity"
       >
-        <Plus className="h-3 w-3" />
+        <Plus className="h-3.5 w-3.5" />
       </button>
     </div>
   );
