@@ -5,13 +5,8 @@ const nextConfig = {
   images: {
     domains: ['wewantwaste.co.uk'],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*',
-      },
-    ];
+  experimental: {
+    optimizeCss: true,
   },
 };
 
