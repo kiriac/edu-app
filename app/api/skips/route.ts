@@ -49,7 +49,7 @@ function transformSkipData(externalSkips: ExternalSkip[]): Skip[] {
     // Generate features array
     const features = [
       `${skip.hire_period_days}-day hire period included`,
-      `Holds approximately ${getCapacityEstimate(skip.size)} bin bags`,
+      `Holds approximately ${getCapacityEstimate(skip.size)}`,
       skip.allowed_on_road ? "Can be placed on road with permit" : "Not suitable for road placement",
       skip.allows_heavy_waste ? "Suitable for heavy waste" : "Not suitable for heavy waste"
     ];
