@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Skip, OrderSummary, SelectedSkip } from "../types";
 import Header from "../components/Header";
 import ProgressTracker from "../components/ProgressTracker";
 import InfoBanner from "../components/InfoBanner";
@@ -10,8 +9,34 @@ import SkipCard from "../components/SkipCard";
 import OrderSummaryComponent from "../components/OrderSummary";
 import Footer from "../components/Footer";
 
+// Define types within the page component for simplicity
+interface Skip {
+  id: number;
+  name: string;
+  description: string;
+  size: string;
+  price: number;
+  features: string[];
+  capacity: string;
+  suitableFor: string;
+  hireIncluded: string;
+}
+
+interface OrderSummary {
+  subtotal: number;
+  delivery: number;
+  vat: number;
+  total: number;
+}
+
+interface SelectedSkip {
+  id: number;
+  name: string;
+  price: number;
+}
+
 /**
- * Main Skip Selector Page Component
+ * Main Skip Selector Page Component using Next.js App Router
  */
 export default function SkipSelectorPage() {
   const [selectedSkip, setSelectedSkip] = useState<SelectedSkip | null>(null);
