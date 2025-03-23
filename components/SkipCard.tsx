@@ -1,12 +1,12 @@
 "use client";
 
 import { Check, Package, Truck, Leaf } from "lucide-react";
-import { cn } from "../client/src/lib/utils";
 import { Skip } from "../client/src/lib/types";
+import { cn } from "../client/src/lib/utils";
 
 // These UI components need to be moved to the components/ui folder later
-import { Badge } from "../client/src/components/ui/badge";
 import { Button } from "../client/src/components/ui/button";
+import { Badge } from "../client/src/components/ui/badge";
 
 interface SkipCardProps {
   skip: Skip;
