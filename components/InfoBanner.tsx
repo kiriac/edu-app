@@ -1,33 +1,56 @@
 "use client";
 
-import { HelpCircle, ArrowRight } from "lucide-react";
-
-// These UI components need to be moved to the components/ui folder later
-import { Card, CardContent } from "../client/src/components/ui/card"; 
-import { Button } from "../client/src/components/ui/button";
+import React from "react";
+import { Truck, Recycle, Clock, HelpCircle } from "lucide-react";
 
 export default function InfoBanner() {
   return (
-    <Card className="mb-8 overflow-hidden bg-gradient-to-r from-primary/10 to-primary/5 border-none shadow-sm">
-      <CardContent className="p-0">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5">
-          <div className="flex items-start mb-4 sm:mb-0">
-            <div className="rounded-full bg-primary/20 p-2 mr-4">
-              <HelpCircle className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-base font-medium text-gray-900 mb-1">Not sure which skip is right for you?</h3>
-              <p className="text-sm text-gray-600">
-                Our guide will help you determine the perfect skip size for your garden waste.
-              </p>
-            </div>
+    <div className="bg-gray-50 rounded-xl border border-gray-200 mb-8 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {/* Fast Delivery */}
+        <div className="flex items-center p-5 border-b md:border-b lg:border-b-0 lg:border-r border-gray-200">
+          <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+            <Truck className="h-5 w-5 text-primary" />
           </div>
-          <Button variant="outline" className="group" size="sm">
-            <span>Skip Size Guide</span>
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-          </Button>
+          <div>
+            <h3 className="font-medium text-gray-900">Fast Delivery</h3>
+            <p className="text-sm text-gray-600">Usually next day delivery for orders before 12pm</p>
+          </div>
         </div>
-      </CardContent>
-    </Card>
+        
+        {/* Eco-Friendly */}
+        <div className="flex items-center p-5 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-gray-200">
+          <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+            <Recycle className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-medium text-gray-900">Eco-Friendly Disposal</h3>
+            <p className="text-sm text-gray-600">Over 90% of waste is recycled or reused</p>
+          </div>
+        </div>
+        
+        {/* Extended Hire */}
+        <div className="flex items-center p-5 border-b md:border-b-0 md:border-r lg:border-r border-gray-200">
+          <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+            <Clock className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-medium text-gray-900">Extended Hire Available</h3>
+            <p className="text-sm text-gray-600">Flexible extensions for your convenience</p>
+          </div>
+        </div>
+        
+        {/* Help & Support */}
+        <div className="flex items-center p-5">
+          <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+            <HelpCircle className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-medium text-gray-900">Expert Advice</h3>
+            <p className="text-sm text-gray-600">Call us if you need help selecting the right skip</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
