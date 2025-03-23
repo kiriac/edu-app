@@ -2,83 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #38a169;
-  --primary-foreground: #ffffff;
-  
-  --secondary: #2d3748;
-  --secondary-foreground: #ffffff;
-  
-  --accent: #4fd1c5;
-  --accent-foreground: #1a202c;
-  
-  --background: #f7fafc;
-  --foreground: #1a202c;
-  
-  --card: #ffffff;
-  --card-foreground: #1a202c;
-  
-  --muted: #e2e8f0;
-  --muted-foreground: #718096;
-  
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  
-  --destructive: #e53e3e;
-  --destructive-foreground: #ffffff;
-  
-  --ring: #38a169;
-  
-  --radius: 0.5rem;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
 }
 
-* {
-  @apply border-border;
+/* Custom styles for the application */
+.skip-card-transition {
+  transition: all 0.3s ease;
 }
 
-body {
-  @apply bg-background text-foreground;
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
-
-@layer components {
-  .text-primary {
-    color: var(--primary);
-  }
-  .bg-primary {
-    background-color: var(--primary);
-  }
-  .border-primary {
-    border-color: var(--primary);
-  }
-  .hover\:bg-primary:hover {
-    background-color: var(--primary);
-  }
-  .hover\:border-primary:hover {
-    border-color: var(--primary);
-  }
-  .hover\:text-primary:hover {
-    color: var(--primary);
-  }
-  .focus\:border-primary:focus {
-    border-color: var(--primary);
-  }
-  .focus\:ring-primary:focus {
-    --ring-color: var(--primary);
-  }
-  .bg-primary\/10 {
-    background-color: rgba(56, 161, 105, 0.1);
-  }
-  .bg-primary\/20 {
-    background-color: rgba(56, 161, 105, 0.2);
-  }
-  .bg-primary\/90 {
-    background-color: rgba(56, 161, 105, 0.9);
-  }
-  .border-primary\/20 {
-    border-color: rgba(56, 161, 105, 0.2);
-  }
-  .shadow-primary\/20 {
-    --shadow-color: rgba(56, 161, 105, 0.2);
-  }
+.primary-gradient {
+  background: linear-gradient(to right, #10b981, #059669);
 }
